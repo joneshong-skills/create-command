@@ -1,15 +1,16 @@
 ---
 name: create-command
-description: >-
-  This skill should be used when the user asks to "create a command",
-  "make a slash command", "add a command", "build a command",
-  "新增 command", "建立指令", "做一個 command",
-  "should this be a skill or command", "skill 還是 command",
-  mentions creating lightweight slash commands, or discusses
-  converting skills to commands.
+description: "Create Command"
 version: 0.2.0
 tools: Read, Write, Edit, Bash, Glob, Grep, sandbox_execute
 argument-hint: "command name or description"
+io:
+  input:
+    - mime: "text/plain"
+      description: "Command concept and behavior"
+  output:
+    - mime: "text/markdown"
+      description: "Generated command definition"
 ---
 
 # Create Command
@@ -67,7 +68,7 @@ Script (deterministic): The actual automation code
 ```
 
 Example from this codebase:
-- `/skill-test` command → calls `run_all.sh` for T1-T4
+- `/skill-test` command → calls `run_all.py` for T1-T4
 - `/skill-tester` skill → full T1-T5 with scenario tests and agent judgment
 
 ## Command Format
@@ -173,7 +174,7 @@ If an existing skill covers the same scope, create the command as a
 ### Step 3: Scaffold
 
 ```bash
-python3 ~/.claude/skills/create-command/scripts/init_command.py <command-name> [--hint "args"]
+~/.local/bin/python3 ~/.claude/skills/create-command/scripts/init_command.py <command-name> [--hint "args"]
 ```
 
 Or write directly — commands are simple enough to create inline.
@@ -197,7 +198,7 @@ Content priority (most important first):
 ### Step 5: Validate
 
 ```bash
-python3 ~/.claude/skills/create-command/scripts/validate_command.py <command-name>
+~/.local/bin/python3 ~/.claude/skills/create-command/scripts/validate_command.py <command-name>
 ```
 
 Checks:
@@ -224,7 +225,7 @@ Run automated skill health checks.
 
 ## Quick Run
 ```bash
-bash ~/.claude/skills/skill-tester/scripts/run_all.sh
+~/.local/bin/python3 ~/.claude/skills/skill-tester/scripts/run_all.py
 ```
 
 ## Options
@@ -307,7 +308,7 @@ When converting multiple skills to commands at once:
 1. List candidates: skills with deterministic workflows or simple templates
 2. For each, extract the **Quick Run + Options** core (discard routing logic)
 3. Create all command files
-4. Validate all: `for f in ~/.claude/commands/*.md; do python3 scripts/validate_command.py "$(basename "$f" .md)"; done`
+4. Validate all: `for f in ~/.claude/commands/*.md; do ~/.local/bin/python3 scripts/validate_command.py "$(basename "$f" .md)"; done`
 5. Keep original skills as full-reference backups
 
 ## Sandbox Optimization
