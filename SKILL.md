@@ -1,6 +1,6 @@
 ---
 name: create-command
-description: "Create Command"
+description: "command, create, add, slash, 建一個指令, 新增 slash command, 把這個做成 command"
 version: 0.2.0
 tools: Read, Write, Edit, Bash, Glob, Grep, sandbox_execute
 argument-hint: "command name or description"
@@ -11,6 +11,7 @@ io:
   output:
     - mime: "text/markdown"
       description: "Generated command definition"
+disable-model-invocation: true
 ---
 
 # Create Command
