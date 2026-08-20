@@ -156,8 +156,9 @@ If uncertain, default to Skill (can always slim down later).
 **Preferred (Sandbox)**:
 ```python
 # sandbox_execute
+import os
 import sys
-sys.path.insert(0, "/Users/joneshong/.claude/skills/create-command/scripts")
+sys.path.insert(0, os.path.expanduser("~/.claude/skills/create-command/scripts"))
 import validate_command
 results = validate_command.check_overlap("<keyword>")
 output(results)

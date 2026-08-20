@@ -22,7 +22,7 @@ bash ~/.claude/skills/skill-tester/scripts/run_all.sh
 - Single skill: `--skill pdf`
 - Categories: `--category T1,T2`
 - JSON output: `--format json`
-- Save to file: `--output ~/workshop/outputs/skill-tester/report.md`
+- Save to file: `--output ~/.claude/outputs/skill-tester/report.md`
 
 ## T5 Scenario Tests
 T5 requires Claude's judgment — invoke the full `/skill-tester` skill for scenario testing.
@@ -102,7 +102,7 @@ Export a structured inventory of all installed skills.
 ```
 
 ## Output
-- JSON: `~/workshop/outputs/skill-catalog/skill-catalog.json`
+- JSON: `~/.claude/outputs/skill-catalog/skill-catalog.json`
 - CSV: add `--format csv`
 - Table: add `--format table` (terminal display)
 
